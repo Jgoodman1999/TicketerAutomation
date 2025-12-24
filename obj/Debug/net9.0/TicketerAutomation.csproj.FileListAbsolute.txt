@@ -118,3 +118,4 @@
 /Users/JoshGoodman/Documents/Repo/TicketerAutomation/obj/Debug/net9.0/TicketerAutomation.pdb
 /Users/JoshGoodman/Documents/Repo/TicketerAutomation/obj/Debug/net9.0/TicketerAutomation.genruntimeconfig.cache
 /Users/JoshGoodman/Documents/Repo/TicketerAutomation/obj/Debug/net9.0/ref/TicketerAutomation.dll
+/Users/JoshGoodman/Documents/Repo/TicketerAutomation/obj/Debug/net9.0/TicketerAutomation.sourcelink.json

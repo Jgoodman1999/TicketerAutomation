@@ -51,30 +51,10 @@ public abstract class BaseClass
         }
     }
 
-    protected void ScrollToElement(By locator)
-    {
-        var element = Driver.FindElement(locator);
-        ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
-        Thread.Sleep(500); 
-    }
-
     protected void ScrollToElement(IWebElement element)
     {
         ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
         Thread.Sleep(500);
-    }
-
-    protected void ClickElement(By locator)
-    {
-        var element = WaitForClickable(locator);
-        try
-        {
-            element.Click();
-        }
-        catch (ElementClickInterceptedException)
-        {
-            ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].click();", element);
-        }
     }
 
     protected void EnterText(By locator, string text)
