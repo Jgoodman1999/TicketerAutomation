@@ -1,0 +1,13 @@
+{
+  "reqnroll": {
+    "language": {
+      "feature": "en"
+    },
+    "bindingCulture": {
+      "name": "en-GB"
+    },
+    "runtime": {
+      "missingOrPendingStepsOutcome": "Error"
+    }
+  }
+}
