@@ -95,8 +95,8 @@ public class TicketerWebsiteSteps
     [When(@"I click on the login button in the top right corner")]
     public void WhenIClickOnTheLoginButtonInTheTopRightCorner()
     {
-        _homePage ??= new TicketerHomeClass(Driver);
-        _homePage.ClickLoginButton();
+        _loginPage ??= new LoginClass(Driver);
+        _loginPage.ClickLoginButtonInHeader();
         Thread.Sleep(2000); 
         TestContext.WriteLine($"Clicked login button, navigated to: {Driver.Url}");
     }
