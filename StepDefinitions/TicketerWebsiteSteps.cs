@@ -20,13 +20,14 @@ public class TicketerWebsiteSteps
     {
         _scenarioContext = scenarioContext;
     }
-
-    // Home Page Steps
     [Given(@"I navigate to the Ticketer homepage")]
     public void GivenINavigateToTheTicketerHomepage()
     {
         _homePage = new TicketerHomeClass(Driver);
         _homePage.NavigateTo();
+    
+        _homePage.GetCurrentUrl().Should().Contain("ticketer.com");
+    
         TestContext.WriteLine($"Navigated to: {Driver.Url}");
     }
 
