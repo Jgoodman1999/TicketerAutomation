@@ -6,44 +6,42 @@ namespace TicketerAutomation.Framework;
 
 public abstract class BaseClass
 {
-    protected readonly IWebDriver Driver;
-    protected readonly WebDriverWait Wait;
+    public readonly IWebDriver Driver;
+    public readonly WebDriverWait Wait;
 
-    protected BaseClass(IWebDriver driver)
+    public BaseClass(IWebDriver driver)
     {
         Driver = driver;
         Wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
     }
-    protected void ClickElement(IWebElement element)
+
+    public void ClickElement(IWebElement element)
     {
         try
         {
-            element.Click();
+            WaitForClickable(element).Click();
         }
-        catch (ElementClickInterceptedException)
-        {
-            ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].click();", element);
-        }
-        catch (ElementNotInteractableException)
+        catch (Exception ex) when (ex is ElementClickInterceptedException or ElementNotInteractableException)
         {
             ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].click();", element);
         }
     }
-    protected IWebElement WaitForElement(By locator)
+
+    public IWebElement WaitForElement(IWebElement element)
     {
-        return Wait.Until(ExpectedConditions.ElementIsVisible(locator));
+        return Wait.Until(d => element.Displayed ? element : null);
     }
 
-    protected IWebElement WaitForClickable(By locator)
+    public IWebElement WaitForClickable(IWebElement element)
     {
-        return Wait.Until(ExpectedConditions.ElementToBeClickable(locator));
+        return Wait.Until(ExpectedConditions.ElementToBeClickable(element));
     }
 
-    protected bool IsElementDisplayed(By locator)
+    public bool IsElementDisplayed(IWebElement element)
     {
         try
         {
-            return WaitForElement(locator).Displayed;
+            return WaitForElement(element).Displayed;
         }
         catch (WebDriverTimeoutException)
         {
@@ -51,25 +49,25 @@ public abstract class BaseClass
         }
     }
 
-    protected void ScrollToElement(IWebElement element)
+    public void ScrollToElement(IWebElement element)
     {
         ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
         Thread.Sleep(500);
     }
 
-    protected void EnterText(By locator, string text)
+    public void EnterText(IWebElement element, string text)
     {
-        var element = WaitForElement(locator);
-        element.Clear();
-        element.SendKeys(text);
+        var el = WaitForElement(element);
+        el.Clear();
+        el.SendKeys(text);
     }
 
-    protected string GetCurrentUrl()
+    public string GetCurrentUrl()
     {
         return Driver.Url;
     }
 
-    protected bool UrlContains(string expectedUrlPart, int timeoutSeconds = 10)
+    public bool UrlContains(string expectedUrlPart, int timeoutSeconds = 10)
     {
         var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeoutSeconds));
         try
@@ -82,7 +80,7 @@ public abstract class BaseClass
         }
     }
 
-    protected bool PageContainsText(string text)
+    public bool PageContainsText(string text)
     {
         try
         {
@@ -95,7 +93,7 @@ public abstract class BaseClass
         }
     }
     
-    protected void ScrollToTop()
+    public void ScrollToTop()
     {
         ((IJavaScriptExecutor)Driver).ExecuteScript("window.scrollTo(0, 0);");
     }

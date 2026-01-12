@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TicketerAutomation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b8bad1bc9220a45cd219f6543ed4c060f985a04")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+665980b7fcce566dfe2feb74adbbdc7c693084bf")]
 [assembly: System.Reflection.AssemblyProductAttribute("TicketerAutomation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TicketerAutomation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

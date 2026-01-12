@@ -2455,6 +2455,7 @@
       "outputPath": "/Users/JoshGoodman/Documents/Repo/TicketerAutomation/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+        "/Users/JoshGoodman/NuGet.Config",
         "/Users/JoshGoodman/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
