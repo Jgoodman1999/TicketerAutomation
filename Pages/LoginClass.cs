@@ -23,9 +23,8 @@ public class LoginClass : BaseClass
 
     public void EnterUsername(string username)
     {
-        var field = Wait.Until(ExpectedConditions.ElementIsVisible(_usernameField));
-        field.Clear();
-        field.SendKeys(username);
+        var field = Driver.FindElement(_usernameField);
+        EnterText(field, username);
     }
 
     public void ClickLoginButton()
